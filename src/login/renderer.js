@@ -4,8 +4,19 @@ import reactDOM from 'react-dom';
 class App extends React.Component {
     constructor(props){
     super(props);
-    this.state = {};
+    this.state = { isLoginOpen: true, isRegisterOpen: false};
     }
+
+
+
+//render everything component
+    showRegisterBox() {
+        this.setState()
+    }
+    
+    
+    
+    
   render() {
       return (
        
@@ -36,6 +47,7 @@ class App extends React.Component {
 }
 
 
+
 class LoginBox extends React.Component {
     //constructor class below the main application 
     //create login box
@@ -46,16 +58,25 @@ class LoginBox extends React.Component {
         };
     }
 
+    
+ submitRegister(e){
+       
+   }
+    
+    
+    
     render() {
-
+          return (
         //couple of input fields
         <div className = "inner-container">
-           
+           <div className = "header">
+             Register
+           </div>
            <div className="box">
 
              <div className="input-group">
              <label htmlFor="username"> UserName</label>
-             <input type = "text" name="username" placeholder="username" id="username"/>
+             <input type = "text" name="username" placeholder="username" id="username" className="login-input"/>
              </div>
    
              <div className="input-group">
@@ -69,6 +90,7 @@ class LoginBox extends React.Component {
 
         </div>
         </div>
+        );
     }
 }
 
@@ -76,7 +98,7 @@ class LoginBox extends React.Component {
 
 
 
-class LoginBox extends React.Component {
+class RegisterBox extends React.Component {
     //constructor class below the main application 
     //create login box
     constructor(props){
@@ -87,29 +109,52 @@ class LoginBox extends React.Component {
     }
 
     render() {
+        return (
+            //couple of input fields
+            <
+            div className = "inner-container" >
+            <
+            div className = "header" >
+            Register <
+            /div> <
+            div className = "box" >
 
-        //couple of input fields
-        <div className = "inner-container">
-           
-           <div className="box">
+            <
+            div className = "input-group" >
+            <
+            label htmlFor = "username" > UserName < /label> <
+            input type = "text"
+            name = "username"
+            placeholder = "username"
+            id = "username" / >
+            <
+            /div>
 
-             <div className="input-group">
-             <label htmlFor="username"> UserName</label>
-             <input type = "text" name="username" placeholder="username" id="username"/>
-             </div>
-   
-             <div className="input-group">
-             <label htmlFor="password"> Password</label>
-             <input type = "password" name="password" className="login-input" placeholder="Password" id="password"/>
-             </div>
-           
+            <
+            div className = "input-group" >
+            <
+            label htmlFor = "password" > Password < /label> <
+            input type = "password"
+            name = "password"
+            className = "login-input"
+            placeholder = "Password"
+            id = "password" / >
+            <
+            /div>
 
-             /* I want an onclick event here */
-           <button type="button" className="login-btn" onClick ={this.submitLogin.bind(this)}>login</button>
 
-        </div>
-        </div>
+            /* I want an onclick event here */
+            <
+            button type = "button"
+            className = "login-btn"
+            onClick = {
+                this.submitRegister.bind(this)
+            } > Register < /button>
+
+            <
+            /div> <
+            /div>
+        );
     }
-}
-
+    }
 reactDOM.render(<App />, document.getElementById("root"));
