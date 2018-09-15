@@ -63,7 +63,8 @@ class LoginBox extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-
+            //create empty errors array inside the state
+            errors: []
         };
     }
 
@@ -71,9 +72,11 @@ class LoginBox extends React.Component {
     
     
     showValidationErr(elm, msg) {
-        
+        //element represents user name or password
+        //grab previous state provide call back
+        this.setState((prevState) => ({errors: [...prevState.errors, {elm, msg}]}) )
     }
-    //takes the element which represents the eleemtn
+    //takes the element which represents the element username input or password input
     clearValidationErr(elm){
         
     }
