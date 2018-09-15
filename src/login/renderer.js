@@ -10,8 +10,16 @@ class App extends React.Component {
 
 
 //render everything component
+    
+    
+    
+    showLoginBox() {
+        this.setState({isLoginOpen: true, isRegisterOpen: false;})
+    }
+    
+    
     showRegisterBox() {
-        this.setState()
+        this.setState({isRegisterOpen: true, isLoginOpen: false; })
     }
     
     
@@ -24,19 +32,20 @@ class App extends React.Component {
           
           <div className = "box-controller">
           
-          <div className = "controller">
+          <div className = {"controller" + (this.state.isLoginOpen ? "selected-controller": "") onClick ={this.showLoginBox.bind(this)}>
             Login
           </div>
-             <div className = "controller">
-              
-              register
+             <div className = {"controller" + (this.state.isRegisterOpen ? "selected-controller" : "")} onClick ={this.showRegisterBox.bind(this)}>
+              //if this then return this
+              Register
 
              </div>
           
           </div>
           
           <div className="box-container">
-              
+              {this.state.isLoginOpen && <LoginBox />} 
+              {this.state.isRegisterOpen && RegisterBox />}
           </div>
           
           </div>
@@ -58,6 +67,18 @@ class LoginBox extends React.Component {
         };
     }
 
+    //two methods show validation erroe
+    
+    
+    showValidationErr(elm, msg) {
+        
+    }
+    //takes the element which represents the eleemtn
+    clearValidationErr(elm){
+        
+    }
+    
+    
     
  submitRegister(e){
        
@@ -70,7 +91,7 @@ class LoginBox extends React.Component {
         //couple of input fields
         <div className = "inner-container">
            <div className = "header">
-             Register
+             Login
            </div>
            <div className="box">
 
