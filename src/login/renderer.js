@@ -67,7 +67,9 @@ class LoginBox extends React.Component {
         this.state = {
             //create empty errors array inside the state
             username : "", email : "", password : "",
-            errors: []
+            errors: [],
+            pwdState: null,
+            //initialise it as null
         };
     }
 
@@ -90,25 +92,28 @@ class LoginBox extends React.Component {
                     //while not equal push curent element to new array
                 }
             }
-            return newArr;
+            return {errors: newArr};
         });
     }
     
     
     
-    
+     
     
     onUsernameChange(e) {
         this.setState({username: e.target.value});
+        this.clearValidationErr("username");
     }
     
     onEmailChange(e) {
         this.setState({email: e.target.value});
+        this.clearValidationErr("email");
     }
     
     
     onPasswordChange(e) {
         this.setState({password: e.target.value});
+          this.clearValidationErr("password");
     }
     
     
@@ -148,7 +153,7 @@ class LoginBox extends React.Component {
         //couple of input fields
         <div className = "inner-container">
            <div className = "header">
-             Register
+             Login
            </div>
            <div className="box">
 
@@ -159,14 +164,6 @@ class LoginBox extends React.Component {
             <small className = "danger-error">{emailErr ? emailErr : ""}</small>
 
              </div>
-   
-             <div className="input-group">
-             <label htmlFor="email"> Email</label>
-             <input type = "email" name="email" className="login-input" placeholder="Email" id="Email"
-              onChange= {this.onEmailChange.bind(this)}
-             />
-            <small className = "danger-error">{emailErr ? emailErr : ""}</small>
-            </div>
 
     
          <div className="input-group">
@@ -249,8 +246,25 @@ class RegisterBox extends React.Component {
    
             / >
             <small className = "danger-error">{passwordErr ? passwordErr : ""}</small>
+           
+            < div className = "password-state" >
+                <
+                div className = {
+                    "pwd pwd-weak"
+                } > < /div> <
+                /div
+            className = {
+                    "pwd pwd-medium"
+                } > < /div> <
+                div className = {
+                    "pwd pwd-strong"
+                } > < /div>
 
-            </div>
+                <
+                /div>
+              
+            
+              </div>
 
 
             /* I want an onclick event here */
