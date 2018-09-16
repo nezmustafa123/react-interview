@@ -114,6 +114,20 @@ class LoginBox extends React.Component {
     onPasswordChange(e) {
         this.setState({password: e.target.value});
           this.clearValidationErr("password");
+        
+        
+        this.setState({ pwdState: "weak"});
+        if(e.target.value.length > 8) {
+            this.setState({pwdState: "medium"});
+        } else if (e.target.value.length > 12){
+            this.setState({pwdState: "strong"})
+        }
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -148,6 +162,27 @@ class LoginBox extends React.Component {
                 emailErr = err.msg; //xurrent error message
             }
         }
+        
+        
+        
+        let pwdWeak = false, pwdMedium = false, pwdStrong = false;
+        
+        
+        
+        if(this.state.pwdState == "weak"){
+            pwdWeak = true;
+        } else if (this.state.pwdState == "medium") {
+            pwdWeak = true;
+            pwdMedium = true;
+        } else if (this.state.pwdState == "strong"){
+            pwdWeak = true;
+            pwdMedium = true;
+            pwdStrong = true;
+        }
+        
+        
+        
+        
         
           return (
         //couple of input fields
@@ -242,29 +277,27 @@ class RegisterBox extends React.Component {
             placeholder = "Password"
             id = "password" 
             
-            onChange = {this.onEmailChange.bind(this)}
-   
-            / >
+            onChange = {this.onEmailChange.bind(this)}/ >
+
+
+
+
+
             <small className = "danger-error">{passwordErr ? passwordErr : ""}</small>
            
-            < div className = "password-state" >
-                <
-                div className = {
-                    "pwd pwd-weak"
-                } > < /div> <
-                /div
-            className = {
-                    "pwd pwd-medium"
-                } > < /div> <
-                div className = {
-                    "pwd pwd-strong"
-                } > < /div>
+          {<this.state.password && <div className = "password-state" >
+                
+                
+            <div className = {"pwd pwd-weak" + (pwdWeak ? "show" : "")}> < /div>
+                                  
+            <div
+            className = {"pwd pwd-medium"+ (pwdMedium ? "show": "")}> < /div> 
 
-                <
-                /div>
+            <div className = {"pwd pwd-strong" + (pwdStrong ? "show" : "")} > < /div>
+
+           </div>}
               
-            
-              </div>
+        </div>
 
 
             /* I want an onclick event here */

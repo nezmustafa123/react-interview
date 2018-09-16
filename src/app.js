@@ -1,6 +1,7 @@
-import React from 'react';
+import React {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Master from './components/Master'
+import {BrowserRouter, Route} from "react-router-dom";
 
 const App = () => (
   <div>
@@ -11,3 +12,6 @@ const App = () => (
 ReactDOM.render(
   <App />, document.getElementById('app')
 );
+
+
+export default App;
